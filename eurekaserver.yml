@@ -1,11 +1,16 @@
 server:
-  port: 8070
+  port: 8070  # Sets the port on which the application will run. In this case, the application will listen on port 8070.
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: localhost  # Sets the hostname of the Eureka instance. Here, it is set to "localhost".
   client:
-    fetchRegistry: false
-    registerWithEureka: false
+    fetchRegistry: false  # Disables fetching the registry (list of registered services) from the Eureka server.
+                           # When set to false, the application will not fetch information about other services.
+    registerWithEureka: false  # Disables registering this application with the Eureka server.
+                               # When set to false, the application will not register itself as a service with Eureka.
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  # Sets the URL of the Eureka server.
+                                                                              # Here, it points to the Eureka server running on the same machine (localhost)
+                                                                              # and the same port as the application (8070). The `${...}` syntax is used to
+                                                                              # dynamically insert the values of `eureka.instance.hostname` and `server.port`.
